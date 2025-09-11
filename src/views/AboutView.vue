@@ -50,6 +50,4 @@
 import profileImage from '@/assets/logos/shahid.png'
 </script>
 
-<style scoped>
-/* Scoped styles for this component, if needed */
-</style>
+<style scoped></style>

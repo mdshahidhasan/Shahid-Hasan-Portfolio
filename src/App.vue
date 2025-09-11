@@ -21,8 +21,8 @@ import { RouterView } from 'vue-router'
         </RouterView>
       </main>
 
-      <!-- Footer stays at the bottom -->
-      <LayoutFooter />
+      <!-- Footer stays at the bottom
+      <LayoutFooter />-->
     </div>
   </div>
 </template>

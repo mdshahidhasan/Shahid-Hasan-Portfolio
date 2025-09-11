@@ -1,13 +1,41 @@
-<!DOCTYPE html>
-<html lang="">
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO and Social Sharing Meta Tags -->
+    <title>Md. Shahid Hasan | Software Engineer</title>
+    <meta
+      name="description"
+      content="The professional portfolio of Md. Shahid Hasan, a passionate Software Engineer specializing in full-stack development with .NET and Vue.js."
+    />
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <div id="app"></div>
+  <body class="bg-gray-100 dark:bg-gray-900">
+    <div id="app">
+      <!-- Basic loading state to provide feedback before Vue mounts -->
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          font-family: 'Inter', sans-serif;
+          color: #4a5568;
+        "
+      >
+        Loading Portfolio...
+      </div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

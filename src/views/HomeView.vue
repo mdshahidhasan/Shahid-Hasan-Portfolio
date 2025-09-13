@@ -1,164 +1,346 @@
 <template>
-  <div
-    class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg animate-fade-in flex items-center justify-center min-h-full"
-  >
-    <div class="text-center">
-      <!-- Name -->
-      <h1
-        class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight tracking-tight"
-      >
-        Md. Shahid Hasan
-      </h1>
+  <main class="bg-slate-50 font-sans text-gray-900 flex-grow">
+    <div class="container mx-auto max-w-screen-xl px-6 py-12 md:py-24">
+      <section class="flex flex-col-reverse md:flex-row items-center justify-center gap-12">
+        <!-- Left Column: Text Content -->
+        <div class="md:w-3/5 text-center md:text-left">
+          <h1 class="text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
+            Hi, I'm <br />
+            Md. Shahid Hasan
+          </h1>
+          <h2 class="mt-4 text-2xl text-gray-600">Software Engineer</h2>
+          <p class="mt-6 max-w-xl mx-auto md:mx-0 text-gray-500 leading-relaxed">
+            I'm a passionate and results-driven Software Engineer with a strong focus on building
+            efficient, scalable, and user-friendly web applications. With experience in technologies
+            like .NET Core, Vue.js, and Docker, I enjoy tackling complex problems and turning ideas
+            into reality.
+          </p>
 
-      <!-- Current Role -->
-      <p class="mt-4 text-lg sm:text-xl font-semibold text-indigo-600 dark:text-indigo-400">
-        Software Engineer @ Arvyo
-      </p>
+          <!-- Action Buttons -->
+          <div class="mt-8 flex flex-wrap justify-center md:justify-start gap-4">
+            <a
+              href="/shahid-hasan-resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-gray-900 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-gray-800 transition-transform duration-300 hover:-translate-y-1"
+            >
+              Download My Resume
+            </a>
+            <router-link
+              to="/contact"
+              class="bg-white text-gray-900 font-semibold px-6 py-3 rounded-lg border-2 border-gray-300 hover:bg-gray-100 transition-transform duration-300 hover:-translate-y-1"
+            >
+              Get In Touch
+            </router-link>
+          </div>
 
-      <!-- Tech Stack -->
-      <p class="mt-2 max-w-2xl mx-auto text-base text-gray-500 dark:text-gray-400 leading-relaxed">
-        Full-Stack Developer | ASP.NET Core | Vue.js | Angular | TypeScript | SQL
-      </p>
+          <!-- Social Media Links -->
+          <div class="mt-12 flex justify-center md:justify-start items-center gap-6">
+            <a
+              v-for="social in socials"
+              :key="social.name"
+              :href="social.href"
+              target="_blank"
+              rel="noopener noreferrer"
+              :aria-label="social.name"
+              class="text-gray-700 hover:text-gray-500 transition-transform duration-300 hover:-translate-y-1"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                v-html="social.iconPath"
+              ></svg>
+            </a>
+          </div>
+        </div>
 
-      <!-- Short Bio -->
-      <p class="mt-6 max-w-3xl mx-auto text-base text-gray-600 dark:text-gray-300 leading-relaxed">
-        I build scalable, user-friendly web applications with a strong focus on clean code and
-        problem-solving. Passionate about continuous learning, I enjoy working with modern
-        frameworks and contributing to meaningful projects.
-      </p>
-
-      <!-- CV Button -->
-      <div class="my-12">
-        <a
-          href="/cv.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition-transform transform hover:scale-105 shadow-lg"
-        >
-          <svg
-            class="w-5 h-5 mr-3"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-              clip-rule="evenodd"
-            />
-          </svg>
-          Download My Resume
-        </a>
-      </div>
-
-      <!-- Social Links -->
-      <div class="mt-8 flex justify-center items-center space-x-6">
-        <a
-          href="https://www.linkedin.com/in/shou/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-gray-400 hover:text-indigo-500 transition-colors"
-        >
-          <span class="sr-only">LinkedIn</span>
-          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-            />
-          </svg>
-        </a>
-        <a
-          href="https://github.com/shahid130"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-gray-400 hover:text-indigo-500 transition-colors"
-        >
-          <span class="sr-only">GitHub</span>
-          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              fill-rule="evenodd"
-              d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.942.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </a>
-        <a
-          href="https://gitlab.com/shahid130"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-gray-400 hover:text-indigo-500 transition-colors"
-        >
-          <span class="sr-only">GitLab</span>
-          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M23.955 13.587l-1.34-4.124H1.385l-1.34 4.124h23.91zm-1.385-5.124l-3.34-10.28-2.668 8.208h8.676zM1.43 8.463l8.675.002-2.667-8.207-3.34 10.278-2.668-2.073zm3.932 6.124l-1.88 5.78h7.72l-5.84-5.78zm15.205 0l-5.842 5.78h7.72l-1.878-5.78zm-7.62-1h-4.02l2.01 2.062 2.01-2.062z"
-            />
-          </svg>
-        </a>
-
-        <!-- Codeforces -->
-        <a
-          href="https://codeforces.com/profile/sh0u"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-gray-400 hover:text-indigo-500 transition-colors"
-        >
-          <span class="sr-only">Codeforces</span>
-          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 4h4v16H4V4zm6 3h4v13h-4V7zm6-2h4v15h-4V5z" />
-          </svg>
-        </a>
-
-        <!-- LeetCode -->
-        <a
-          href="https://leetcode.com/u/shahidhasanshourav/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-gray-400 hover:text-indigo-500 transition-colors"
-        >
-          <span class="sr-only">LeetCode</span>
-          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M17.5 3.5a1 1 0 00-1.4 0l-9 9a1 1 0 000 1.4l9 9a1 1 0 001.4-1.4L9.42 12l8.08-8.08a1 1 0 000-1.42z"
-            />
-            <path d="M21 12a1 1 0 01-1 1h-9.5a1 1 0 010-2H20a1 1 0 011 1z" />
-          </svg>
-        </a>
-
-        <!-- Chess.com -->
-        <a
-          href="https://www.chess.com/member/shahid_hasan"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-gray-400 hover:text-indigo-500 transition-colors"
-        >
-          <span class="sr-only">Chess.com</span>
-          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M12 2a2 2 0 012 2v2h1a1 1 0 011 1v2.5a4.5 4.5 0 11-9 0V7a1 1 0 011-1h1V4a2 2 0 012-2zm0 12a6.5 6.5 0 100 13 6.5 6.5 0 000-13z"
-            />
-          </svg>
-        </a>
-      </div>
+        <!-- Right Column: Image -->
+        <div class="md:w-2/5 relative flex justify-center">
+          <div class="w-72 h-72 lg:w-96 lg:h-96 relative">
+            <div
+              class="absolute inset-0 bg-white rounded-full p-3 shadow-inner ring-2 ring-gray-200"
+            >
+              <img
+                :src="profileImage"
+                alt="A photo of Md. Shahid Hasan"
+                class="w-full h-full object-cover rounded-full"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  </div>
+
+    <!-- Chatbot Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+      <button
+        @click="toggleChat"
+        class="bg-gray-900 text-white w-16 h-16 rounded-full shadow-lg flex items-center justify-center transform hover:scale-110 transition-transform duration-300"
+      >
+        <svg
+          v-if="!isChatOpen"
+          class="w-8 h-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+          ></path>
+        </svg>
+        <svg v-else class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Chatbot Window -->
+    <transition
+      enter-active-class="transition ease-out duration-300"
+      enter-from-class="transform opacity-0 scale-95"
+      enter-to-class="transform opacity-100 scale-100"
+      leave-active-class="transition ease-in duration-200"
+      leave-from-class="transform opacity-100 scale-100"
+      leave-to-class="transform opacity-0 scale-95"
+    >
+      <div
+        v-if="isChatOpen"
+        class="fixed bottom-24 right-6 w-full max-w-sm h-full max-h-[600px] bg-white rounded-xl shadow-2xl flex flex-col z-50"
+      >
+        <!-- Chat Header -->
+        <div class="bg-gray-900 text-white p-4 rounded-t-xl flex items-center">
+          <div class="w-3 h-3 bg-green-400 rounded-full mr-2"></div>
+          <h3 class="font-bold text-lg">AI Assistant</h3>
+        </div>
+
+        <!-- Messages -->
+        <div ref="messageContainer" class="flex-grow p-4 overflow-y-auto">
+          <div
+            v-for="(message, index) in messages"
+            :key="index"
+            :class="message.role === 'user' ? 'text-right' : 'text-left'"
+          >
+            <div
+              class="inline-block px-4 py-2 my-1 rounded-lg"
+              :class="
+                message.role === 'user' ? 'bg-gray-900 text-white' : 'bg-gray-200 text-gray-800'
+              "
+            >
+              {{ message.text }}
+            </div>
+          </div>
+          <div v-if="isLoading" class="text-left">
+            <div class="inline-block px-4 py-2 my-1 rounded-lg bg-gray-200 text-gray-800">
+              <span class="animate-pulse">...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input -->
+        <div class="p-4 border-t border-gray-200">
+          <form @submit.prevent="sendMessage" class="flex items-center">
+            <input
+              v-model="userInput"
+              type="text"
+              placeholder="Ask about my skills..."
+              class="flex-grow px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-800"
+            />
+            <button
+              type="submit"
+              class="ml-3 bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 disabled:bg-gray-400"
+              :disabled="!userInput.trim() || isLoading"
+            >
+              Send
+            </button>
+          </form>
+        </div>
+      </div>
+    </transition>
+  </main>
 </template>
 
 <script setup lang="ts">
-// No script logic needed for this static page
+import { ref, nextTick } from 'vue'
+import { RouterLink } from 'vue-router'
+import profileImage from '@/assets/photos/shahid.png'
+
+// --- Social Links Data ---
+interface SocialLink {
+  name: string
+  href: string
+  iconPath: string
+}
+
+const socials = ref<SocialLink[]>([
+  {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/shou/',
+    iconPath:
+      '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>',
+  },
+  {
+    name: 'GitHub',
+    href: 'https://github.com/shahid130',
+    iconPath:
+      '<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>',
+  },
+  {
+    name: 'GitLab',
+    href: 'https://gitlab.com/shahid130',
+    iconPath:
+      '<path d="m22.65 14.36-1.51-4.63a.51.51 0 0 0-.94 0l-1.51 4.63-4.13-2.69a.5.5 0 0 0-.6 0l-4.13 2.69-1.51-4.63a.51.51 0 0 0-.94 0L4.35 14.36a.5.5 0 0 0 .19.64l7.46 4.87a.5.5 0 0 0 .6 0l7.46-4.87a.5.5 0 0 0 .19-.64Z"></path>',
+  },
+  {
+    name: 'Codeforces',
+    href: 'https://codeforces.com/profile/sh0u',
+    iconPath:
+      '<polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>',
+  },
+  {
+    name: 'LeetCode',
+    href: 'https://leetcode.com/u/shahidhasanshourav/',
+    iconPath:
+      '<path d="M15.5 16.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"></path><path d="M18.8 3.7a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"></path><path d="M18.8 20.3a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"></path><path d="M8.5 7.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"></path><path d="M12.5 12a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"></path><path d="M5.2 20.3a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"></path><path d="m15.8 5.5-3.6 2.8"></path><path d="m15.8 18.5-12.2 15"></path><path d="m5.5 9.3-1.6 4.4"></path>',
+  },
+  {
+    name: 'Chess.com',
+    href: 'https://www.chess.com/member/shahid_hasan',
+    iconPath:
+      '<path d="M18 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4h2v4h-2v2h4v-6h-2a2 2 0 0 1-2-2 2 2 0 0 1 2-2h2V8h-4zM8 20v-4h2a4 4 0 0 0 0-8h-2V4H4v16h4z"></path>',
+  },
+])
+
+// --- Chatbot Logic ---
+const isChatOpen = ref(false)
+const userInput = ref('')
+const isLoading = ref(false)
+const messageContainer = ref<HTMLElement | null>(null)
+
+interface Message {
+  role: 'user' | 'model'
+  text: string
+}
+
+const messages = ref<Message[]>([
+  {
+    role: 'model',
+    text: "Hello! I'm Shahid's AI assistant. Ask me anything about his skills or projects.",
+  },
+])
+
+const toggleChat = () => {
+  isChatOpen.value = !isChatOpen.value
+}
+
+const scrollToBottom = () => {
+  nextTick(() => {
+    if (messageContainer.value) {
+      messageContainer.value.scrollTop = messageContainer.value.scrollHeight
+    }
+  })
+}
+
+const sendMessage = async () => {
+  const userMessage = userInput.value.trim()
+  if (!userMessage || isLoading.value) return
+
+  messages.value.push({ role: 'user', text: userMessage })
+  userInput.value = ''
+  isLoading.value = true
+  scrollToBottom()
+
+  const systemPrompt = `You are a helpful and friendly AI assistant for Md. Shahid Hasan's personal portfolio website. Your goal is to answer questions about him based on the following information. Keep your answers concise and professional, but with a friendly tone.
+
+  **About Shahid:**
+  - Name: Md. Shahid Hasan
+  - Current Role: Software Engineer at Arvyo.
+  - From: Lalmonirhat, Bangladesh.
+  - Education: B.Sc. in Computer Science & Engineering from Ahsanullah University of Science & Technology.
+  - Key Skills: C#, ASP.NET Core, Vue.js, TypeScript, Docker, SQL (MSSQL, MySQL), Angular, Java, Firebase.
+  - Professional Projects:
+    1. GarirNilam: An online car auction platform using ASP.NET Core and Vue.js.
+    2. Horologica: A watch repair shop management system using ASP.NET Core and Vue.js.
+  - Personal Projects:
+    1. HexaShop: E-commerce site with Angular and ASP.NET Core.
+    2. CholoGhuri: Android app for tourists using Java and Firebase.
+  - Hobbies: Playing chess, traveling, and enjoying coffee (favorite shop is Tabaq).
+  - Strengths: Fast learner, team player, problem solver, writes clean code.
+
+  **Instructions:**
+  - If a user asks a question you can't answer from the info above, politely say "I don't have that information, but you can reach out to Shahid directly via the contact page."
+  - Do not invent information.
+  - Encourage users to check out his project or contact pages for more details.`
+
+  const apiKey = '' // Canvas will provide the key
+  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`
+
+  const payload = {
+    contents: [{ parts: [{ text: userMessage }] }],
+    systemInstruction: {
+      parts: [{ text: systemPrompt }],
+    },
+  }
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+
+    if (!response.ok) {
+      throw new Error(`API error: ${response.statusText}`)
+    }
+
+    const result = await response.json()
+    const candidate = result.candidates?.[0]
+
+    if (candidate && candidate.content?.parts?.[0]?.text) {
+      const modelResponse = candidate.content.parts[0].text
+      messages.value.push({ role: 'model', text: modelResponse })
+    } else {
+      messages.value.push({
+        role: 'model',
+        text: "Sorry, I couldn't get a response. Please try again.",
+      })
+    }
+  } catch (error) {
+    console.error('Error calling Gemini API:', error)
+    messages.value.push({
+      role: 'model',
+      text: 'Sorry, something went wrong. Please try again later.',
+    })
+  } finally {
+    isLoading.value = false
+    scrollToBottom()
+  }
+}
 </script>
 
 <style scoped>
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Scoped styles for SVG icons */
+svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
-.animate-fade-in {
-  animation: fade-in 0.5s ease-out forwards;
+
+/* Override stroke style for icons that are designed with fills */
+a[aria-label='LeetCode'] svg,
+a[aria-label='GitLab'] svg,
+a[aria-label='Chess.com'] svg {
+  fill: currentColor;
+  stroke: none;
 }
 </style>

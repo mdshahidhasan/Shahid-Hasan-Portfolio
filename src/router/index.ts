@@ -5,6 +5,7 @@ import ExperienceView from '@/views/ExperienceView.vue'
 import EducationView from '@/views/EducationView.vue'
 import ResearchView from '@/views/ResearchView.vue'
 import ContactView from '@/views/ContactView.vue'
+import ProjectView from '@/views/ProjectView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,6 +34,11 @@ const router = createRouter({
       path: '/research',
       name: 'research',
       component: ResearchView,
+    },
+    {
+      path: '/projects',
+      name: 'projects',
+      component: ProjectView,
     },
     {
       path: '/contact',

@@ -1,6 +1,6 @@
 <template>
   <main class="bg-slate-50 font-sans text-gray-900 flex-grow">
-    <div class="container mx-auto max-w-screen-xl px-6 py-12 md:py-24">
+    <div class="container mx-auto max-w-screen-lg px-6 py-12 md:py-20">
       <section class="flex flex-col-reverse md:flex-row items-center justify-center gap-12">
         <!-- Left Column: Text Content -->
         <div class="md:w-3/5 text-center md:text-left">
@@ -10,10 +10,9 @@
           </h1>
           <h2 class="mt-4 text-2xl text-gray-600">Software Engineer</h2>
           <p class="mt-6 max-w-xl mx-auto md:mx-0 text-gray-500 leading-relaxed">
-            I'm a passionate and results-driven Software Engineer with a strong focus on building
-            efficient, scalable, and user-friendly web applications. With experience in technologies
-            like .NET Core, Vue.js, and Docker, I enjoy tackling complex problems and turning ideas
-            into reality.
+            A Full Stack Software Engineer specializing in ASP.NET Core and Vue.js. I build scalable
+            web applications with clean architecture and seamless user experiences. Passionate about
+            learning, solving complex problems, and delivering impactful solutions.
           </p>
 
           <!-- Action Buttons -->
@@ -73,7 +72,7 @@
     </div>
 
     <!-- Chatbot Button -->
-    <div class="fixed bottom-6 right-6 z-50">
+    <div class="fixed bottom-12 right-12 z-50">
       <button
         @click="toggleChat"
         class="bg-gray-900 text-white w-16 h-16 rounded-full shadow-lg flex items-center justify-center transform hover:scale-110 transition-transform duration-300"
@@ -172,6 +171,7 @@
 import { ref, nextTick } from 'vue'
 import { RouterLink } from 'vue-router'
 import profileImage from '@/assets/photos/shahid.png'
+import { shahidSystemPrompt } from '@/data/shahidContext'
 
 // --- Social Links Data ---
 interface SocialLink {
@@ -258,29 +258,9 @@ const sendMessage = async () => {
   isLoading.value = true
   scrollToBottom()
 
-  const systemPrompt = `You are a helpful and friendly AI assistant for Md. Shahid Hasan's personal portfolio website. Your goal is to answer questions about him based on the following information. Keep your answers concise and professional, but with a friendly tone.
+  const systemPrompt = shahidSystemPrompt
 
-  **About Shahid:**
-  - Name: Md. Shahid Hasan
-  - Current Role: Software Engineer at Arvyo.
-  - From: Lalmonirhat, Bangladesh.
-  - Education: B.Sc. in Computer Science & Engineering from Ahsanullah University of Science & Technology.
-  - Key Skills: C#, ASP.NET Core, Vue.js, TypeScript, Docker, SQL (MSSQL, MySQL), Angular, Java, Firebase.
-  - Professional Projects:
-    1. GarirNilam: An online car auction platform using ASP.NET Core and Vue.js.
-    2. Horologica: A watch repair shop management system using ASP.NET Core and Vue.js.
-  - Personal Projects:
-    1. HexaShop: E-commerce site with Angular and ASP.NET Core.
-    2. CholoGhuri: Android app for tourists using Java and Firebase.
-  - Hobbies: Playing chess, traveling, and enjoying coffee (favorite shop is Tabaq).
-  - Strengths: Fast learner, team player, problem solver, writes clean code.
-
-  **Instructions:**
-  - If a user asks a question you can't answer from the info above, politely say "I don't have that information, but you can reach out to Shahid directly via the contact page."
-  - Do not invent information.
-  - Encourage users to check out his project or contact pages for more details.`
-
-  const apiKey = '' // Canvas will provide the key
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY
   const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`
 
   const payload = {

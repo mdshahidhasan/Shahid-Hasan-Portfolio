@@ -1,6 +1,6 @@
 <template>
   <footer class="bg-slate-50 border-t border-slate-200">
-    <div class="container mx-auto max-w-screen-xl px-6 py-5">
+    <div class="container mx-auto max-w-screen-lg px-6 py-5">
       <p class="text-center text-sm text-gray-500">
         &copy; {{ currentYear }} Md. Shahid Hasan. All Rights Reserved.
       </p>

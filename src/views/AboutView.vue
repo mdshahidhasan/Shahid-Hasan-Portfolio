@@ -55,7 +55,7 @@
               <p class="text-sm text-gray-500 mt-1">Passionate about clean, maintainable code.</p>
             </div>
 
-            <!-- Fast Learner Card -->
+            <!-- Fast Learner Card
             <div
               class="bg-white p-6 rounded-xl shadow-lg text-center aspect-square flex flex-col justify-evenly items-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
             >
@@ -76,9 +76,9 @@
               <p class="text-sm text-gray-500 mt-1">
                 Quick to adapt to new technologies and advanced frameworks.
               </p>
-            </div>
+            </div>-->
 
-            <!-- Team Player Card -->
+            <!-- Team Player Card
             <div
               class="bg-white p-6 rounded-xl shadow-lg text-center aspect-square flex flex-col justify-evenly items-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
             >
@@ -99,7 +99,7 @@
               <p class="text-sm text-gray-500 mt-1">
                 A collaborative approach to solving complex problems.
               </p>
-            </div>
+            </div> -->
 
             <!-- Problem Solver Card -->
             <div

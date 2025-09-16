@@ -69,7 +69,12 @@
               </div>
               <div>
                 <h3 class="text-lg font-semibold text-gray-800">Phone</h3>
-                <p class="text-gray-500">01521252236</p>
+                <a
+                  href="tel:+8801521252236"
+                  class="text-gray-500 hover:text-gray-800 transition-colors"
+                >
+                  +8801521252236
+                </a>
               </div>
             </div>
             <!-- Location -->
@@ -109,6 +114,16 @@
         <!-- Right Column: Contact Form -->
         <div class="bg-white p-8 rounded-xl shadow-lg">
           <h2 class="text-2xl font-bold mb-6">Send me a message</h2>
+
+          <!-- Success & Error Alerts -->
+          <div v-if="successMessage" class="mb-4 p-4 rounded-lg bg-green-100 text-green-800">
+            {{ successMessage }}
+          </div>
+          <div v-if="errorMessage" class="mb-4 p-4 rounded-lg bg-red-100 text-red-800">
+            {{ errorMessage }}
+          </div>
+
+          <!-- Form -->
           <form @submit.prevent="handleSubmit">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
               <div>
@@ -116,10 +131,12 @@
                   >Full Name</label
                 >
                 <input
+                  v-model="fullName"
                   type="text"
                   id="fullName"
                   class="w-full px-4 py-2 bg-slate-100 border border-slate-200 rounded-lg focus:ring-2 focus:ring-gray-800 focus:border-transparent transition duration-200"
                   placeholder="Your Name"
+                  required
                 />
               </div>
               <div>
@@ -127,10 +144,12 @@
                   >Email Address</label
                 >
                 <input
+                  v-model="email"
                   type="email"
                   id="email"
                   class="w-full px-4 py-2 bg-slate-100 border border-slate-200 rounded-lg focus:ring-2 focus:ring-gray-800 focus:border-transparent transition duration-200"
                   placeholder="you@example.com"
+                  required
                 />
               </div>
             </div>
@@ -139,10 +158,12 @@
                 >Subject</label
               >
               <input
+                v-model="subject"
                 type="text"
                 id="subject"
                 class="w-full px-4 py-2 bg-slate-100 border border-slate-200 rounded-lg focus:ring-2 focus:ring-gray-800 focus:border-transparent transition duration-200"
-                placeholder="Regarding your portfolio"
+                placeholder="Subject..."
+                required
               />
             </div>
             <div class="mb-6">
@@ -150,10 +171,12 @@
                 >Message</label
               >
               <textarea
+                v-model="message"
                 id="message"
                 rows="5"
                 class="w-full px-4 py-2 bg-slate-100 border border-slate-200 rounded-lg focus:ring-2 focus:ring-gray-800 focus:border-transparent transition duration-200"
                 placeholder="Your message here..."
+                required
               ></textarea>
             </div>
             <div>
@@ -173,10 +196,44 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import emailjs from '@emailjs/browser'
 
-const handleSubmit = () => {
-  // This is a placeholder for form submission logic.
-  // In a real application, you would send the form data to a server or email service.
-  alert('Form submitted! (This is a demo)')
+// form fields
+const fullName = ref('')
+const email = ref('')
+const subject = ref('')
+const message = ref('')
+
+// feedback state
+const successMessage = ref('')
+const errorMessage = ref('')
+
+const handleSubmit = async () => {
+  try {
+    await emailjs.send(
+      import.meta.env.VITE_EmailJS_SERVICE_ID,
+      import.meta.env.VITE_EmailJS_TEMPLATE_ID,
+      {
+        name: fullName.value,
+        email: email.value,
+        title: subject.value,
+        message: message.value,
+      },
+      import.meta.env.VITE_EmailJS_PUBLIC_KEY,
+    )
+
+    successMessage.value = '✅ Message sent successfully!'
+    errorMessage.value = ''
+
+    // clear form
+    fullName.value = ''
+    email.value = ''
+    subject.value = ''
+    message.value = ''
+  } catch (error) {
+    console.error(error)
+    successMessage.value = ''
+    errorMessage.value = '❌ Failed to send message. Please try again.'
+  }
 }
 </script>

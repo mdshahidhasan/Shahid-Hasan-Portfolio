@@ -83,7 +83,6 @@ const navLinks = ref<NavLink[]>([
   { name: 'Experience', id: 'experience' },
   { name: 'Projects', id: 'projects' },
   { name: 'Skills', id: 'skills' },
-  { name: 'Education', id: 'education' },
   { name: 'Contact', id: 'contact' },
 ])
 

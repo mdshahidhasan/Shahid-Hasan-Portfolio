@@ -1,5 +1,5 @@
 <template>
-  <main class="bg-slate-50 font-sans text-gray-900 flex-grow">
+  <main class="bg-slate-50 font-sans text-gray-900 flex-grow pt-20">
     <div class="container mx-auto max-w-screen-lg px-6 py-12 md:py-20">
       <section class="flex flex-col-reverse md:flex-row items-center justify-center gap-12">
         <!-- Left Column: Text Content -->

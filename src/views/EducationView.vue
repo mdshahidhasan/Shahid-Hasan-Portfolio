@@ -45,6 +45,7 @@ import { ref } from 'vue'
 import austLogo from '@/assets/logos/aust.png'
 import dccLogo from '@/assets/logos/dcc.png'
 import ssLogo from '@/assets/logos/ss.png'
+import nsuLogo from '@/assets/logos/nsu.png'
 
 interface Education {
   institution: string
@@ -54,6 +55,12 @@ interface Education {
 }
 
 const educationHistory = ref<Education[]>([
+  {
+    institution: 'North South University',
+    duration: '2025 – Present',
+    degree: 'Master of Business Administration (MBA)',
+    logo: nsuLogo,
+  },
   {
     institution: 'Ahsanullah University of Science & Technology',
     duration: '2019 – 2023',

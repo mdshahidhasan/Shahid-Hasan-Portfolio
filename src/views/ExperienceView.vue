@@ -2,7 +2,7 @@
   <main class="bg-slate-50 font-sans text-gray-900 flex-grow">
     <div class="container mx-auto max-w-screen-lg px-6 py-12 md:py-20">
       <!-- Page Header -->
-      <div class="text-center mb-12 md:mb-16">
+      <div class="text-center mb-10 md:mb-13">
         <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Work Experience</h1>
         <p class="mt-4 text-lg text-gray-500">My professional journey and key contributions.</p>
         <div class="mt-6 mx-auto w-24 h-1 bg-gray-900 rounded"></div>

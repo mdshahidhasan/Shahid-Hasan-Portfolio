@@ -77,7 +77,6 @@
                 Quick to adapt to new technologies and advanced frameworks.
               </p>
             </div>-->
-
             <!-- Team Player Card
             <div
               class="bg-white p-6 rounded-xl shadow-lg text-center aspect-square flex flex-col justify-evenly items-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"

@@ -72,7 +72,7 @@
     </div>
 
     <!-- Chatbot Button -->
-    <div class="fixed bottom-12 right-12 z-50">
+    <div class="fixed bottom-6 right-6 z-50">
       <button
         @click="toggleChat"
         class="bg-gray-900 text-white w-16 h-16 rounded-full shadow-lg flex items-center justify-center transform hover:scale-110 transition-transform duration-300"

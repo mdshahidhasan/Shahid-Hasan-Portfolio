@@ -1,8 +1,8 @@
 <template>
-  <main class="bg-slate-50 font-sans text-gray-900 flex-grow">
+  <main class="bg-gray-300 font-sans text-gray-900 flex-grow">
     <div class="container mx-auto max-w-screen-lg px-6 py-12 md:py-20">
       <!-- Page Header -->
-      <div class="text-center mb-10 md:mb-13">
+      <div class="text-center mb-10 md:mb-13" style="font-family: 'Playfair Display', serif">
         <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Work Experience</h1>
         <p class="mt-4 text-lg text-gray-500">My professional journey and key contributions.</p>
         <div class="mt-6 mx-auto w-24 h-1 bg-gray-900 rounded"></div>
@@ -29,7 +29,7 @@
           </div>
 
           <!-- Right Side: Job Details -->
-          <div class="md:w-2/3 p-6 md:p-8">
+          <div class="md:w-2/3 p-6 md:p-8" style="font-family: 'Playfair Display', serif">
             <h2 class="text-2xl font-bold text-gray-800 mb-3">{{ job.title }}</h2>
 
             <!-- Responsibilities List -->
@@ -83,10 +83,12 @@ const workExperience = ref<WorkExperience[]>([
     logo: arvyoLogo,
     technologies: ['C#', '.NET Core', 'TypeScript', 'Vue.js', 'Docker', 'MSSQL', 'MySQL'],
     responsibilities: [
-      'Engineered and optimized scalable backend services using .NET Core, focusing on business logic, efficient data processing, and robust API development.',
-      'Architected and implemented dynamic, responsive user interfaces with Vue.js and TypeScript, leading to enhanced user engagement and improved front-end performance.',
-      'Diagnosed and resolved complex bugs and performance bottlenecks across the full stack, significantly increasing application stability and reliability.',
-      'Contributed to a culture of continuous improvement by researching, proposing, and integrating new tools to boost development productivity.',
+      'Built and optimized backend services with ASP.NET Core and robust REST APIs.',
+      'Created dynamic, responsive UIs with Vue.js and TypeScript.',
+      'Integrated Cloudflare R2, Azure Blob and Mailgun for storage and notifications.',
+      'Resolved full-stack performance issues and bugs, improving stability.',
+      'Deployed apps with Docker for consistent environments.',
+      'Adopted new tools and patterns to boost development efficiency.',
     ],
   },
   // You can add more job experiences here in the future

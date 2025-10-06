@@ -1,8 +1,8 @@
 <template>
-  <main class="bg-slate-50 font-sans text-gray-900 flex-grow">
+  <main class="bg-gray-100 font-sans text-gray-900 flex-grow">
     <div class="container mx-auto max-w-screen-lg px-6 py-12 md:py-20">
       <!-- Page Header -->
-      <div class="text-center mb-12 md:mb-16">
+      <div class="text-center mb-12 md:mb-16" style="font-family: 'Playfair Display', serif">
         <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Research & Publications</h1>
         <p class="mt-4 text-lg text-gray-500 mx-auto">
           A look into my academic research and contributions to the field of AI and deep learning.

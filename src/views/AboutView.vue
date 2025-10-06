@@ -1,22 +1,32 @@
 <template>
-  <main class="bg-slate-50 font-sans text-gray-900 flex-grow">
+  <main class="bg-zinc-200 text-gray-900 flex-grow">
     <div class="container mx-auto max-w-screen-lg px-6 py-12 md:py-20">
       <!-- Page Header -->
       <div class="text-center mb-12 md:mb-16">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900">About Me</h1>
-        <p class="mt-4 text-lg text-gray-500 max-w-3xl mx-auto">
+        <h1
+          class="text-4xl md:text-5xl font-bold text-gray-900"
+          style="font-family: 'Playfair Display', serif"
+        >
+          About Me
+        </h1>
+        <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
           Passionate software engineer with a love for clean code, creative problem-solving, and a
           good cup of coffee.
         </p>
-        <div class="mt-6 mx-auto w-24 h-1 bg-gray-900 rounded"></div>
+        <div class="mt-6 mx-auto w-24 h-1 bg-gray-800 rounded"></div>
       </div>
 
       <!-- Main Content Grid -->
       <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
         <!-- Left Column: My Story -->
         <div class="lg:col-span-3">
-          <h2 class="text-3xl font-bold text-gray-800 mb-6">My Story</h2>
-          <div class="space-y-4 text-gray-600 leading-relaxed">
+          <h2
+            class="text-3xl font-bold text-gray-800 mb-6"
+            style="font-family: 'Playfair Display', serif"
+          >
+            My Story
+          </h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
             <p>
               I'm Md. Shahid Hasan, a Software Engineer at Arvyo with a passion for building
               efficient and scalable applications. My academic background in Computer Science &
@@ -33,7 +43,7 @@
 
         <!-- Right Column: What I Love / Skills -->
         <div class="lg:col-span-2">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="grid grid-cols-2 gap-6">
             <!-- Clean Code Card -->
             <div
               class="bg-white p-6 rounded-xl shadow-lg text-center aspect-square flex flex-col justify-evenly items-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
@@ -55,51 +65,6 @@
               <p class="text-sm text-gray-500 mt-1">Passionate about clean, maintainable code.</p>
             </div>
 
-            <!-- Fast Learner Card
-            <div
-              class="bg-white p-6 rounded-xl shadow-lg text-center aspect-square flex flex-col justify-evenly items-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-            >
-              <svg
-                class="w-10 h-10 mx-auto mb-3 text-gray-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                ></path>
-              </svg>
-              <h3 class="font-bold text-gray-800">Fast Learner</h3>
-              <p class="text-sm text-gray-500 mt-1">
-                Quick to adapt to new technologies and advanced frameworks.
-              </p>
-            </div>-->
-            <!-- Team Player Card
-            <div
-              class="bg-white p-6 rounded-xl shadow-lg text-center aspect-square flex flex-col justify-evenly items-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-            >
-              <svg
-                class="w-10 h-10 mx-auto mb-3 text-gray-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.122-1.28-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.122-1.28.356-1.857m0 0a5.002 5.002 0 019.288 0M12 14a4 4 0 100-8 4 4 0 000 8z"
-                ></path>
-              </svg>
-              <h3 class="font-bold text-gray-800">Team Player</h3>
-              <p class="text-sm text-gray-500 mt-1">
-                A collaborative approach to solving complex problems.
-              </p>
-            </div> -->
-
             <!-- Problem Solver Card -->
             <div
               class="bg-white p-6 rounded-xl shadow-lg text-center aspect-square flex flex-col justify-evenly items-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
@@ -114,7 +79,7 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 011-1h1a2 2 0 100-4H7a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
+                  d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 001-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 011-1h1a2 2 0 100-4H7a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
                 ></path>
               </svg>
               <h3 class="font-bold text-gray-800">Problem Solver</h3>
@@ -128,18 +93,20 @@
               class="bg-white p-6 rounded-xl shadow-lg text-center aspect-square flex flex-col justify-evenly items-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
             >
               <svg
+                xmlns="http://www.w3.org/2000/svg"
                 class="w-10 h-10 mx-auto mb-3 text-gray-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+                fill="currentColor"
+                viewBox="0 0 50 64"
               >
+                <title>Chess Knight Icon</title>
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M11 18l-1 4H6l1-4m5 4l1 4h4l-1-4M6.75 4.75L9 9l-2.25 4.25M17.25 4.75L15 9l2.25 4.25m-6-1.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm6 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"
-                ></path>
+                  d="M45.5 12.5c-1.5-2.7-4.5-4.5-7.5-4.5H12c-2.2 0-4 1.8-4 4v20c0 2.2 1.8 4 4 4h3.5v12h-2c-2.2 0-4 1.8-4 4v4h33c2.2 0 4-1.8 4-4v-4h-2c-2.2 0-4-1.8-4-4V38h3.5c2.2 0 4-1.8 4-4v-2.5c0-1.5-1-3-2.5-3.5 1-2.5 1.5-5 1.5-7.5 0-4.5-3-8-7-9.5zM20 18c0-1.1.9-2 2-2h11c1.1 0 2 .9 2 2v6c0 1.1-.9 2-2 2H22c-1.1 0-2-.9-2-2v-6zm15 16h-17v-4h17v4zm-17 12h17v4h-17v-4z"
+                />
+                <path
+                  d="M34 14.5c0 1.9-1.6 3.5-3.5 3.5s-3.5-1.6-3.5-3.5S28.6 11 30.5 11s3.5 1.6 3.5 3.5z"
+                />
               </svg>
+
               <h3 class="font-bold text-gray-800">Chess Player</h3>
               <p class="text-sm text-gray-500 mt-1">
                 Applying strategy and foresight to every challenge.
@@ -175,6 +142,4 @@
   </main>
 </template>
 
-<script setup lang="ts">
-// This page is currently static, but setup is here for future additions.
-</script>
+<script setup lang="ts"></script>

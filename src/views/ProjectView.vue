@@ -1,24 +1,51 @@
 <template>
-  <main class="bg-slate-50 font-sans text-gray-900 flex-grow">
+  <main class="bg-gray-100 font-sans text-gray-900 flex-grow min-h-screen">
     <div class="container mx-auto max-w-screen-lg px-6 py-12 md:py-20">
       <!-- Page Header -->
-      <div class="text-center mb-12 md:mb-16">
+      <div class="text-center mb-12 md:mb-16" style="font-family: 'Playfair Display', serif">
         <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Projects</h1>
-        <p class="mt-4 text-lg text-gray-500 max-w-2xl mx-auto">
+        <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
           A selection of projects that showcase my passion for software development and
           problem-solving.
         </p>
         <div class="mt-6 mx-auto w-24 h-1 bg-gray-900 rounded"></div>
       </div>
 
+      <!-- Tab Navigation -->
+      <div class="flex justify-center mb-12">
+        <div class="inline-flex bg-white rounded-lg shadow-md p-1">
+          <button
+            @click="activeTab = 'professional'"
+            :class="[
+              'px-6 py-3 rounded-md font-semibold transition-all duration-200',
+              activeTab === 'professional'
+                ? 'bg-gray-900 text-white'
+                : 'text-gray-600 hover:text-gray-900',
+            ]"
+          >
+            Professional Experience
+          </button>
+          <button
+            @click="activeTab = 'personal'"
+            :class="[
+              'px-6 py-3 rounded-md font-semibold transition-all duration-200',
+              activeTab === 'personal'
+                ? 'bg-gray-900 text-white'
+                : 'text-gray-600 hover:text-gray-900',
+            ]"
+          >
+            Personal Projects
+          </button>
+        </div>
+      </div>
+
       <!-- Professional Projects Section -->
-      <section id="professional-projects">
-        <h2 class="text-3xl font-bold text-center mb-10">Professional Experience</h2>
+      <section v-if="activeTab === 'professional'" id="professional-projects">
         <div class="space-y-12">
           <div
             v-for="(project, index) in professionalProjects"
             :key="project.title"
-            class="bg-white rounded-xl shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-2xl"
+            class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]"
           >
             <div class="p-8">
               <h3 class="text-2xl font-bold text-gray-900 mb-3">{{ project.title }}</h3>
@@ -28,7 +55,7 @@
                 <span
                   v-for="tech in project.technologies"
                   :key="tech"
-                  class="bg-slate-100 text-slate-700 text-sm font-medium px-3 py-1 rounded-full"
+                  class="bg-yellow-50 text-gray-700 text-sm font-medium px-3 py-1 rounded-full border border-yellow-200"
                 >
                   {{ tech }}
                 </span>
@@ -39,13 +66,12 @@
       </section>
 
       <!-- Personal Projects Section -->
-      <section id="personal-projects" class="mt-20">
-        <h2 class="text-3xl font-bold text-center mb-10">Personal Projects</h2>
+      <section v-if="activeTab === 'personal'" id="personal-projects">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div
             v-for="project in personalProjects"
             :key="project.title"
-            class="bg-white rounded-xl shadow-lg p-8 flex flex-col transition-shadow duration-300 hover:shadow-2xl"
+            class="bg-white rounded-xl shadow-lg p-8 flex flex-col transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]"
           >
             <h3 class="text-2xl font-bold text-gray-900 mb-3">{{ project.title }}</h3>
             <p class="text-gray-600 mb-6 leading-relaxed flex-grow">{{ project.description }}</p>
@@ -54,7 +80,7 @@
               <span
                 v-for="tech in project.technologies"
                 :key="tech"
-                class="bg-slate-100 text-slate-700 text-sm font-medium px-3 py-1 rounded-full"
+                class="bg-yellow-50 text-gray-700 text-sm font-medium px-3 py-1 rounded-full border border-yellow-200"
               >
                 {{ tech }}
               </span>
@@ -74,6 +100,8 @@ interface Project {
   description: string
   technologies: string[]
 }
+
+const activeTab = ref<'professional' | 'personal'>('professional')
 
 const professionalProjects = ref<Project[]>([
   {
@@ -117,3 +145,14 @@ const personalProjects = ref<Project[]>([
   },
 ])
 </script>
+
+<style>
+/* Custom font stack similar to Apple's design but cross-platform compatible */
+.font-sans {
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue',
+    'Segoe UI', 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+</style>

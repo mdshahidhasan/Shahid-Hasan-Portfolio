@@ -4,11 +4,16 @@
       <section class="flex flex-col-reverse md:flex-row items-center justify-center gap-12">
         <!-- Left Column: Text Content -->
         <div class="md:w-3/5 text-center md:text-left">
-          <h1 class="text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
+          <h1
+            class="text-5xl lg:text-6xl font-bold leading-tight text-gray-900"
+            style="font-family: 'Playfair Display', serif"
+          >
             Hi, I'm <br />
             Md. Shahid Hasan
           </h1>
-          <h2 class="mt-4 text-2xl text-gray-600">Software Engineer</h2>
+          <h2 class="mt-4 text-2xl text-gray-600" style="font-family: 'Playfair Display', serif">
+            Software Engineer
+          </h2>
           <p class="mt-6 max-w-xl mx-auto md:mx-0 text-gray-500 leading-relaxed">
             A Full Stack Software Engineer specializing in ASP.NET Core and Vue.js. I build scalable
             web applications with clean architecture and seamless user experiences. Passionate about
@@ -64,6 +69,7 @@
                 :src="profileImage"
                 alt="A photo of Md. Shahid Hasan"
                 class="w-full h-full object-cover rounded-full"
+                loading="lazy"
               />
             </div>
           </div>

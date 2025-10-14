@@ -47,11 +47,13 @@
               target="_blank"
               rel="noopener noreferrer"
               :aria-label="social.name"
-              class="text-gray-700 hover:text-gray-500 transition-transform duration-300 hover:-translate-y-1"
+              class="text-gray-700 hover:text-gray-900 transition-all duration-300 hover:-translate-y-1 hover:scale-110"
             >
               <svg
                 class="w-6 h-6"
-                fill="currentColor"
+                :class="{
+                  'fill-current': ['LeetCode', 'GitLab', 'Chess.com'].includes(social.name),
+                }"
                 viewBox="0 0 24 24"
                 v-html="social.iconPath"
               ></svg>
@@ -77,107 +79,16 @@
       </section>
     </div>
 
-    <!-- Chatbot Button -->
-    <div class="fixed bottom-6 right-6 z-50">
-      <button
-        @click="toggleChat"
-        class="bg-gray-900 text-white w-16 h-16 rounded-full shadow-lg flex items-center justify-center transform hover:scale-110 transition-transform duration-300"
-      >
-        <svg
-          v-if="!isChatOpen"
-          class="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-          ></path>
-        </svg>
-        <svg v-else class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-          ></path>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Chatbot Window -->
-    <transition
-      enter-active-class="transition ease-out duration-300"
-      enter-from-class="transform opacity-0 scale-95"
-      enter-to-class="transform opacity-100 scale-100"
-      leave-active-class="transition ease-in duration-200"
-      leave-from-class="transform opacity-100 scale-100"
-      leave-to-class="transform opacity-0 scale-95"
-    >
-      <div
-        v-if="isChatOpen"
-        class="fixed bottom-24 right-6 w-full max-w-sm h-full max-h-[600px] bg-white rounded-xl shadow-2xl flex flex-col z-50"
-      >
-        <!-- Chat Header -->
-        <div class="bg-gray-900 text-white p-4 rounded-t-xl flex items-center">
-          <div class="w-3 h-3 bg-green-400 rounded-full mr-2"></div>
-          <h3 class="font-bold text-lg">AI Assistant</h3>
-        </div>
-
-        <!-- Messages -->
-        <div ref="messageContainer" class="flex-grow p-4 overflow-y-auto">
-          <div
-            v-for="(message, index) in messages"
-            :key="index"
-            :class="message.role === 'user' ? 'text-right' : 'text-left'"
-          >
-            <div
-              class="inline-block px-4 py-2 my-1 rounded-lg"
-              :class="
-                message.role === 'user' ? 'bg-gray-900 text-white' : 'bg-gray-200 text-gray-800'
-              "
-            >
-              {{ message.text }}
-            </div>
-          </div>
-          <div v-if="isLoading" class="text-left">
-            <div class="inline-block px-4 py-2 my-1 rounded-lg bg-gray-200 text-gray-800">
-              <span class="animate-pulse">...</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Input -->
-        <div class="p-4 border-t border-gray-200">
-          <form @submit.prevent="sendMessage" class="flex items-center">
-            <input
-              v-model="userInput"
-              type="text"
-              placeholder="Ask about my skills..."
-              class="flex-grow px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-800"
-            />
-            <button
-              type="submit"
-              class="ml-3 bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 disabled:bg-gray-400"
-              :disabled="!userInput.trim() || isLoading"
-            >
-              Send
-            </button>
-          </form>
-        </div>
-      </div>
-    </transition>
+    <!-- Chatbot Component -->
+    <Chatbot />
   </main>
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick } from 'vue'
+import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import profileImage from '@/assets/photos/shahid.png'
-import { shahidSystemPrompt } from '@/data/shahidContext'
+import Chatbot from '@/components/chatbot.vue'
 
 // --- Social Links Data ---
 interface SocialLink {
@@ -215,101 +126,15 @@ const socials = ref<SocialLink[]>([
     name: 'LeetCode',
     href: 'https://leetcode.com/u/shahidhasanshourav/',
     iconPath:
-      '<path d="M15.5 16.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"></path><path d="M18.8 3.7a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"></path><path d="M18.8 20.3a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"></path><path d="M8.5 7.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"></path><path d="M12.5 12a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"></path><path d="M5.2 20.3a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"></path><path d="m15.8 5.5-3.6 2.8"></path><path d="m15.8 18.5-12.2 15"></path><path d="m5.5 9.3-1.6 4.4"></path>',
+      '<path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"></path>',
   },
   {
     name: 'Chess.com',
     href: 'https://www.chess.com/member/shahid_hasan',
     iconPath:
-      '<path d="M18 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4h2v4h-2v2h4v-6h-2a2 2 0 0 1-2-2 2 2 0 0 1 2-2h2V8h-4zM8 20v-4h2a4 4 0 0 0 0-8h-2V4H4v16h4z"></path>',
+      '<path d="M11 3v2.07c-.522.07-1.027.19-1.51.358L8.49 4.43l-1.414 1.414 1 1c-.16.49-.27.998-.33 1.523H5.001v2h2.745c.06.525.17 1.033.33 1.523l-1 1 1.414 1.414 1-1c.483.168.988.288 1.51.358V15.5h2v-2.251c.522-.07 1.027-.19 1.51-.358l1 1 1.414-1.414-1-1c.16-.49.27-.998.33-1.523h2.745v-2h-2.745c-.06-.525-.17-1.033-.33-1.523l1-1-1.414-1.414-1 1c-.483-.168-.988-.288-1.51-.358V3h-2zm0 5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm-8 8v2h18v-2H3z"></path>',
   },
 ])
-
-// --- Chatbot Logic ---
-const isChatOpen = ref(false)
-const userInput = ref('')
-const isLoading = ref(false)
-const messageContainer = ref<HTMLElement | null>(null)
-
-interface Message {
-  role: 'user' | 'model'
-  text: string
-}
-
-const messages = ref<Message[]>([
-  {
-    role: 'model',
-    text: "Hello! I'm Shahid's AI assistant. Ask me anything about his skills or projects.",
-  },
-])
-
-const toggleChat = () => {
-  isChatOpen.value = !isChatOpen.value
-}
-
-const scrollToBottom = () => {
-  nextTick(() => {
-    if (messageContainer.value) {
-      messageContainer.value.scrollTop = messageContainer.value.scrollHeight
-    }
-  })
-}
-
-const sendMessage = async () => {
-  const userMessage = userInput.value.trim()
-  if (!userMessage || isLoading.value) return
-
-  messages.value.push({ role: 'user', text: userMessage })
-  userInput.value = ''
-  isLoading.value = true
-  scrollToBottom()
-
-  const systemPrompt = shahidSystemPrompt
-
-  const apiKey = import.meta.env.VITE_GEMINI_API_KEY
-  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`
-
-  const payload = {
-    contents: [{ parts: [{ text: userMessage }] }],
-    systemInstruction: {
-      parts: [{ text: systemPrompt }],
-    },
-  }
-
-  try {
-    const response = await fetch(apiUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    })
-
-    if (!response.ok) {
-      throw new Error(`API error: ${response.statusText}`)
-    }
-
-    const result = await response.json()
-    const candidate = result.candidates?.[0]
-
-    if (candidate && candidate.content?.parts?.[0]?.text) {
-      const modelResponse = candidate.content.parts[0].text
-      messages.value.push({ role: 'model', text: modelResponse })
-    } else {
-      messages.value.push({
-        role: 'model',
-        text: "Sorry, I couldn't get a response. Please try again.",
-      })
-    }
-  } catch (error) {
-    console.error('Error calling Gemini API:', error)
-    messages.value.push({
-      role: 'model',
-      text: 'Sorry, something went wrong. Please try again later.',
-    })
-  } finally {
-    isLoading.value = false
-    scrollToBottom()
-  }
-}
 </script>
 
 <style scoped>
@@ -322,11 +147,10 @@ svg {
   stroke-linejoin: round;
 }
 
-/* Override stroke style for icons that are designed with fills */
-a[aria-label='LeetCode'] svg,
-a[aria-label='GitLab'] svg,
-a[aria-label='Chess.com'] svg {
+/* Override for filled icons */
+svg.fill-current {
   fill: currentColor;
   stroke: none;
+  stroke-width: 0;
 }
 </style>

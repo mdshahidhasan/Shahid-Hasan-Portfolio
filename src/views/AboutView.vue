@@ -1,139 +1,124 @@
 <template>
-  <main class="bg-zinc-200 text-gray-900 flex-grow">
+  <main class="bg-gray-200 from-slate-300 via-white to-slate-100 flex-grow pt-20">
     <div class="container mx-auto max-w-screen-lg px-6 py-12 md:py-20">
-      <!-- Page Header -->
-      <div class="text-center mb-12 md:mb-16">
+      <!-- Header -->
+      <div class="text-center mb-16">
         <h1
-          class="text-4xl md:text-5xl font-bold text-gray-900"
+          class="text-5xl md:text-6xl font-bold text-gray-900 mb-4"
           style="font-family: 'Playfair Display', serif"
         >
           About Me
         </h1>
-        <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-          Passionate software engineer with a love for clean code, creative problem-solving, and a
-          good cup of coffee.
-        </p>
-        <div class="mt-6 mx-auto w-24 h-1 bg-gray-800 rounded"></div>
+        <div
+          class="w-24 h-1.5 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 mx-auto rounded-full"
+        ></div>
       </div>
 
       <!-- Main Content Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
-        <!-- Left Column: My Story -->
-        <div class="lg:col-span-3">
-          <h2
-            class="text-3xl font-bold text-gray-800 mb-6"
-            style="font-family: 'Playfair Display', serif"
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <!-- Left Side - Story & Quote -->
+        <div class="space-y-8">
+          <!-- My Journey Card -->
+          <div class="bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-gray-100">
+            <h2
+              class="text-3xl font-bold text-gray-900 mb-6"
+              style="font-family: 'Playfair Display', serif"
+            >
+              My Journey
+            </h2>
+
+            <div class="space-y-5 text-gray-700 leading-relaxed">
+              <p class="text-xl font-semibold text-gray-900">
+                From curious student to passionate professional 🚀
+              </p>
+              <p>
+                My journey into software engineering began during my Computer Science & Engineering
+                studies, where I discovered my passion for transforming complex problems into
+                elegant, working solutions. What started as curiosity about how things work has
+                evolved into a career dedicated to building scalable, efficient applications.
+              </p>
+              <p>
+                Currently, I work as a Software Engineer at
+                <span class="font-semibold text-gray-900">Arvyo</span>, where I specialize in
+                full-stack development using ASP.NET Core for robust backend systems and Vue.js for
+                intuitive, responsive user interfaces. I believe that great software is not just
+                about making things work—it's about making them work beautifully.
+              </p>
+              <p>
+                Beyond the code, I'm a strategic thinker who loves chess, a problem-solver who
+                thrives on challenges, and someone who believes that the best ideas often come over
+                a good cup of coffee at my favorite spot, Tabaq. Every line of code I write reflects
+                my commitment to clean architecture, maintainability, and user-centric design.
+              </p>
+            </div>
+          </div>
+
+          <!-- Quote Card -->
+          <div
+            class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl shadow-xl p-8 md:p-10 text-white"
           >
-            My Story
-          </h2>
-          <div class="space-y-4 text-gray-700 leading-relaxed">
-            <p>
-              I'm Md. Shahid Hasan, a Software Engineer at Arvyo with a passion for building
-              efficient and scalable applications. My academic background in Computer Science &
-              Engineering provided me with a strong foundation in programming and problem-solving.
-            </p>
-            <p>
-              Originally from Lalmonirhat, I thrive on turning complex ideas into reality through
-              clean and efficient code. I'm always eager to take on new challenges and grow as a
-              developer in a professional environment, often fueled by a cup of tea or coffee from
-              my favorite shop, Tabaq.
-            </p>
+            <div class="flex items-start gap-4">
+              <svg
+                class="w-12 h-12 text-gray-500 flex-shrink-0"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
+                />
+              </svg>
+              <div>
+                <p class="text-xl italic leading-relaxed mb-4">
+                  "The best way to predict the future is to create it."
+                </p>
+                <p class="text-gray-400 text-sm font-medium">— My development philosophy</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Right Column: What I Love / Skills -->
-        <div class="lg:col-span-2">
-          <div class="grid grid-cols-2 gap-6">
-            <!-- Clean Code Card -->
-            <div
-              class="bg-white p-6 rounded-xl shadow-lg text-center aspect-square flex flex-col justify-evenly items-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-            >
-              <svg
-                class="w-10 h-10 mx-auto mb-3 text-gray-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                ></path>
-              </svg>
-              <h3 class="font-bold text-gray-800">Clean Code</h3>
-              <p class="text-sm text-gray-500 mt-1">Passionate about clean, maintainable code.</p>
-            </div>
+        <!-- Right Side - Principles Cards -->
+        <div>
+          <h2
+            class="text-3xl font-bold text-gray-900 mb-8 text-center lg:text-left"
+            style="font-family: 'Playfair Display', serif"
+          >
+            What Drives Me
+          </h2>
 
-            <!-- Problem Solver Card -->
+          <div class="grid gap-6">
             <div
-              class="bg-white p-6 rounded-xl shadow-lg text-center aspect-square flex flex-col justify-evenly items-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              v-for="principle in principles"
+              :key="principle.title"
+              class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 group"
             >
-              <svg
-                class="w-10 h-10 mx-auto mb-3 text-gray-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 001-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 011-1h1a2 2 0 100-4H7a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
-                ></path>
-              </svg>
-              <h3 class="font-bold text-gray-800">Problem Solver</h3>
-              <p class="text-sm text-gray-500 mt-1">
-                Love tackling challenging technical problems.
-              </p>
-            </div>
-
-            <!-- Chess Player Card -->
-            <div
-              class="bg-white p-6 rounded-xl shadow-lg text-center aspect-square flex flex-col justify-evenly items-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-10 h-10 mx-auto mb-3 text-gray-600"
-                fill="currentColor"
-                viewBox="0 0 50 64"
-              >
-                <title>Chess Knight Icon</title>
-                <path
-                  d="M45.5 12.5c-1.5-2.7-4.5-4.5-7.5-4.5H12c-2.2 0-4 1.8-4 4v20c0 2.2 1.8 4 4 4h3.5v12h-2c-2.2 0-4 1.8-4 4v4h33c2.2 0 4-1.8 4-4v-4h-2c-2.2 0-4-1.8-4-4V38h3.5c2.2 0 4-1.8 4-4v-2.5c0-1.5-1-3-2.5-3.5 1-2.5 1.5-5 1.5-7.5 0-4.5-3-8-7-9.5zM20 18c0-1.1.9-2 2-2h11c1.1 0 2 .9 2 2v6c0 1.1-.9 2-2 2H22c-1.1 0-2-.9-2-2v-6zm15 16h-17v-4h17v4zm-17 12h17v4h-17v-4z"
-                />
-                <path
-                  d="M34 14.5c0 1.9-1.6 3.5-3.5 3.5s-3.5-1.6-3.5-3.5S28.6 11 30.5 11s3.5 1.6 3.5 3.5z"
-                />
-              </svg>
-
-              <h3 class="font-bold text-gray-800">Chess Player</h3>
-              <p class="text-sm text-gray-500 mt-1">
-                Applying strategy and foresight to every challenge.
-              </p>
-            </div>
-
-            <!-- Coffee & Code Card -->
-            <div
-              class="bg-white p-6 rounded-xl shadow-lg text-center aspect-square flex flex-col justify-evenly items-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-            >
-              <svg
-                class="w-10 h-10 mx-auto mb-3 text-gray-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 11a3 3 0 100-6 3 3 0 000 6zM2 21h18c.6 0 1-.4 1-1V6c0-.6-.4-1-1-1h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c1.7 0 3 1.3 3 3v14c0 1.7-1.3 3-3 3H2c-1.7 0-3-1.3-3-3V4c0-1.7 1.3-3 3-3h2c.6 0 1 .4 1 1s-.4 1-1 1H4c-.6 0-1 .4-1 1v1h18V6"
-                ></path>
-              </svg>
-              <h3 class="font-bold text-gray-800">Coffee & Code</h3>
-              <p class="text-sm text-gray-500 mt-1">
-                Tackling complex problems, one cup at a time.
-              </p>
+              <div class="flex items-start gap-5">
+                <div
+                  class="w-14 h-14 bg-gradient-to-br from-slate-100 to-slate-200 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:from-slate-200 group-hover:to-slate-300 transition-all duration-300"
+                >
+                  <svg
+                    class="w-8 h-8 text-gray-700"
+                    :fill="principle.fill"
+                    :stroke="principle.stroke"
+                    :stroke-width="principle.strokeWidth"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      :stroke-linecap="principle.strokeLinecap || undefined"
+                      :stroke-linejoin="principle.strokeLinejoin || undefined"
+                      :d="principle.iconPath"
+                    />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold text-gray-900 mb-2">
+                    {{ principle.title }}
+                  </h3>
+                  <p class="text-gray-600 leading-relaxed">
+                    {{ principle.description }}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -142,4 +127,58 @@
   </main>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const principles = ref([
+  {
+    title: 'Clean Code',
+    description:
+      'Writing maintainable, readable code that stands the test of time and makes other developers smile.',
+    iconPath: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round' as const,
+    strokeLinejoin: 'round' as const,
+  },
+  {
+    title: 'Problem Solving',
+    description:
+      'Tackling complex challenges with creativity and logic, turning obstacles into opportunities.',
+    iconPath:
+      'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round' as const,
+    strokeLinejoin: 'round' as const,
+  },
+  {
+    title: 'Strategic Thinking',
+    description:
+      'Applying chess-like strategy to software design, always thinking several moves ahead.',
+    iconPath:
+      'M19 22H5v-2h14v2zM12 2c-1.1 0-2 .9-2 2 0 .74.4 1.38 1 1.72V7h-1c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1h1v2h-1c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1h1v2.28c-.6.35-1 .98-1 1.72 0 1.1.9 2 2 2s2-.9 2-2c0-.74-.4-1.38-1-1.72V15h1c.55 0 1-.45 1-1v-1c0-.55-.45-1-1-1h-1v-2h1c.55 0 1-.45 1-1V8c0-.55-.45-1-1-1h-1V5.72c.6-.35 1-.98 1-1.72 0-1.1-.9-2-2-2z',
+    fill: 'currentColor',
+    stroke: 'none',
+    strokeWidth: 0,
+    strokeLinecap: undefined,
+    strokeLinejoin: undefined,
+  },
+  {
+    title: 'User-Centric Design',
+    description:
+      'Building applications that put users first, creating intuitive and delightful experiences.',
+    iconPath:
+      'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round' as const,
+    strokeLinejoin: 'round' as const,
+  },
+])
+</script>
+
+<style scoped></style>

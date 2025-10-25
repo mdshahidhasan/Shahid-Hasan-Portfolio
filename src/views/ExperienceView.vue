@@ -1,5 +1,5 @@
 <template>
-  <main class="bg-gray-300 font-sans text-gray-900 flex-grow">
+  <main class="bg-slate-200 font-sans text-gray-900 flex-grow">
     <div class="container mx-auto max-w-screen-lg px-6 py-12 md:py-20">
       <!-- Page Header -->
       <div class="text-center mb-10 md:mb-13" style="font-family: 'Playfair Display', serif">

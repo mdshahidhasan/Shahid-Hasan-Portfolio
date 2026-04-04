@@ -86,9 +86,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
-import profileImage from '@/assets/photos/shahid.webp'
 import Chatbot from '@/components/chatbot.vue'
+
+const profileImage = new URL('../assets/photos/shahid.webp', import.meta.url).href
 
 // --- Social Links Data ---
 interface SocialLink {

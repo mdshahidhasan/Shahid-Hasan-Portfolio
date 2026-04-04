@@ -257,6 +257,7 @@ const programmingLanguages = ref([
 const frontendSkills = ref([
   'Vue.js',
   'Angular',
+  'Nuxt',
   'TypeScript',
   'JavaScript',
   'HTML5',
@@ -278,6 +279,8 @@ const developerTools = ref([
   'VS Code',
   'Android Studio',
   'NetBeans',
+  'Cursor',
+  'Dbeaver',
 ])
 
 interface SoftSkill {

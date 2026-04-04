@@ -1,5 +1,9 @@
-declare module '*.vue' {
-  import { DefineComponent } from 'vue'
-  const component: DefineComponent<{}, {}, any>
-  export default component
+/// <reference types="vite/client" />
+
+interface ImportMetaEnv {
+  readonly VITE_GEMINI_API_KEY: string
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv
 }

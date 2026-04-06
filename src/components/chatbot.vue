@@ -179,13 +179,23 @@ const sendMessage = async () => {
   const systemPrompt = shahidSystemPrompt
 
   const apiKey = import.meta.env.VITE_GEMINI_API_KEY
-  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`
+  const apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=${apiKey}`
 
   const payload = {
-    contents: [{ parts: [{ text: userMessage }] }],
-    systemInstruction: {
-      parts: [{ text: systemPrompt }],
-    },
+    contents: [
+      {
+        role: 'user',
+        parts: [
+          {
+            text: `${systemPrompt}\n\nConversation:\n`,
+          },
+        ],
+      },
+      ...messages.value.slice(-10).map((m) => ({
+        role: m.role === 'user' ? 'user' : 'model',
+        parts: [{ text: m.text }],
+      })),
+    ],
   }
 
   try {

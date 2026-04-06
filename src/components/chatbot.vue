@@ -150,6 +150,8 @@ const messages = ref<Message[]>([
   },
 ])
 
+const responseCache = new Map<string, string>()
+
 const toggleChat = () => {
   isChatOpen.value = !isChatOpen.value
 }
@@ -177,6 +179,16 @@ const sendMessage = async () => {
   scrollToBottom()
 
   const systemPrompt = shahidSystemPrompt
+  const cacheKey = userMessage.toLowerCase()
+
+  // Check cache first
+  if (responseCache.has(cacheKey)) {
+    const cachedResponse = responseCache.get(cacheKey)!
+    messages.value.push({ role: 'model', text: cachedResponse })
+    isLoading.value = false
+    scrollToBottom()
+    return
+  }
 
   const apiKey = import.meta.env.VITE_GEMINI_API_KEY
   const apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=${apiKey}`
@@ -206,7 +218,27 @@ const sendMessage = async () => {
     })
 
     if (!response.ok) {
-      throw new Error(`API error: ${response.statusText}`)
+      const errorData = await response.json().catch(() => ({}))
+      const statusCode = response.status
+
+      if (statusCode === 429) {
+        // Quota exceeded error
+        messages.value.push({
+          role: 'model',
+          text: '⚠️ API quota exceeded. The chatbot will be available again later. Please come back in a few minutes.',
+        })
+      } else if (statusCode === 401 || statusCode === 403) {
+        // Auth error
+        messages.value.push({
+          role: 'model',
+          text: '❌ API authentication failed. Please check your API key configuration.',
+        })
+      } else {
+        throw new Error(`API error: ${response.statusText}`)
+      }
+      isLoading.value = false
+      scrollToBottom()
+      return
     }
 
     const result = await response.json()
@@ -214,6 +246,7 @@ const sendMessage = async () => {
 
     if (candidate && candidate.content?.parts?.[0]?.text) {
       const modelResponse = candidate.content.parts[0].text
+      responseCache.set(cacheKey, modelResponse) // Cache the response
       messages.value.push({ role: 'model', text: modelResponse })
     } else {
       messages.value.push({

@@ -23,7 +23,7 @@
           <!-- Action Buttons -->
           <div class="mt-8 flex flex-wrap justify-center md:justify-start gap-4">
             <a
-              href="/shahid-hasan-resume.pdf"
+              :href="resumePdf"
               target="_blank"
               rel="noopener noreferrer"
               class="bg-gray-900 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-gray-800 transition-transform duration-300 hover:-translate-y-1"
@@ -88,6 +88,7 @@
 import { ref } from 'vue'
 import profileImage from '@/assets/photos/shahid.webp'
 import Chatbot from '@/components/chatbot.vue'
+import resumePdf from '/shahid-hasan-resume.pdf'
 
 // --- Social Links Data ---
 interface SocialLink {

@@ -131,10 +131,16 @@ interface Message {
   text: string
 }
 
+interface GeminiContent {
+  role: 'user' | 'model'
+  parts: Array<{ text: string }>
+}
+
 const isChatOpen = ref(false)
 const userInput = ref('')
 const isLoading = ref(false)
 const messageContainer = ref<HTMLElement | null>(null)
+const MAX_HISTORY_MESSAGES = 10
 
 const exampleQuestions = ref([
   'What are your technical skills?',
@@ -149,8 +155,6 @@ const messages = ref<Message[]>([
     text: "Hello! I'm Shahid's AI assistant. Ask me anything about his skills or projects.",
   },
 ])
-
-const responseCache = new Map<string, string>()
 
 const toggleChat = () => {
   isChatOpen.value = !isChatOpen.value
@@ -178,66 +182,39 @@ const sendMessage = async () => {
   isLoading.value = true
   scrollToBottom()
 
-  const systemPrompt = shahidSystemPrompt
-  const cacheKey = userMessage.toLowerCase()
-
-  // Check cache first
-  if (responseCache.has(cacheKey)) {
-    const cachedResponse = responseCache.get(cacheKey)!
-    messages.value.push({ role: 'model', text: cachedResponse })
-    isLoading.value = false
-    scrollToBottom()
-    return
-  }
-
-  const apiKey = import.meta.env.VITE_GEMINI_API_KEY
-  const apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=${apiKey}`
-
-  const payload = {
-    contents: [
-      {
-        role: 'user',
-        parts: [
-          {
-            text: `${systemPrompt}\n\nConversation:\n`,
-          },
-        ],
-      },
-      ...messages.value.slice(-10).map((m) => ({
-        role: m.role === 'user' ? 'user' : 'model',
-        parts: [{ text: m.text }],
-      })),
-    ],
-  }
+  const contents: GeminiContent[] = [
+    {
+      role: 'user',
+      parts: [
+        {
+          text: `${shahidSystemPrompt}\n\nConversation:\n`,
+        },
+      ],
+    },
+    ...messages.value.slice(-MAX_HISTORY_MESSAGES).map((message) => ({
+      role: message.role,
+      parts: [{ text: message.text }],
+    })),
+  ]
 
   try {
-    const response = await fetch(apiUrl, {
+    const response = await fetch('/api/chat', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ contents }),
     })
 
     if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}))
-      const statusCode = response.status
+      const errorData = await response.json().catch(() => null)
+      const errorMessage =
+        errorData?.error || 'Sorry, something went wrong. Please try again later.'
 
-      if (statusCode === 429) {
-        // Quota exceeded error
-        messages.value.push({
-          role: 'model',
-          text: '⚠️ API quota exceeded. The chatbot will be available again later. Please come back in a few minutes.',
-        })
-      } else if (statusCode === 401 || statusCode === 403) {
-        // Auth error
-        messages.value.push({
-          role: 'model',
-          text: '❌ API authentication failed. Please check your API key configuration.',
-        })
-      } else {
-        throw new Error(`API error: ${response.statusText}`)
-      }
-      isLoading.value = false
-      scrollToBottom()
+      messages.value.push({
+        role: 'model',
+        text: errorMessage,
+      })
       return
     }
 
@@ -245,9 +222,7 @@ const sendMessage = async () => {
     const candidate = result.candidates?.[0]
 
     if (candidate && candidate.content?.parts?.[0]?.text) {
-      const modelResponse = candidate.content.parts[0].text
-      responseCache.set(cacheKey, modelResponse) // Cache the response
-      messages.value.push({ role: 'model', text: modelResponse })
+      messages.value.push({ role: 'model', text: candidate.content.parts[0].text })
     } else {
       messages.value.push({
         role: 'model',
@@ -255,7 +230,7 @@ const sendMessage = async () => {
       })
     }
   } catch (error) {
-    console.error('Error calling Gemini API:', error)
+    console.error('Error calling chat API:', error)
     messages.value.push({
       role: 'model',
       text: 'Sorry, something went wrong. Please try again later.',
